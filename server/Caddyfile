@@ -1,0 +1,8 @@
+0.0.0.0:80 {
+  gzip
+  log stdout
+  proxy /api snitch:3000 {
+      transparent
+  }
+  root /www/root
+}

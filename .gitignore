@@ -1,0 +1,5 @@
+snitch
+server/db
+server/.env
+server/caddy
+server/root

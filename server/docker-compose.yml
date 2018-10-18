@@ -1,0 +1,20 @@
+version: '2'
+services:
+  caddy:
+    image: "jpillora/caddy"
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./Caddyfile:/etc/Caddyfile
+      - ./caddy:/root/.caddy:rw
+      - ./root:/www/root
+    restart: always
+  snitch:
+    build: "."
+    image: "snitch"
+    environment:
+      - TELEGRAM_TOKEN
+      - NEDB_FILENAME=/opt/db/users.db
+    volumes:
+      - ./db/:/opt/db
